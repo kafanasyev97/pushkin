@@ -1,0 +1,66 @@
+body {
+  background-color: #d4d4d4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1536px;
+  margin: 129px auto 0;
+  padding: 0 15px;
+  display: grid;
+  gap: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+}
+
+.card {
+  height: 234px;
+  padding: 15px 25px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 25px;
+  transition: 0.5s;
+}
+
+.card:hover {
+  background-color: #fff;
+}
+
+.card--active {
+  box-shadow: 0 0 45.9px 0 #ff2f54;
+}
+
+.card__title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 32px;
+}
+
+.card__text {
+  font-size: 12px;
+}
+
+.button {
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid black;
+  position: fixed;
+  top: 30px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.button--left {
+  left: 700px;
+  background-color: #34eb89;
+}
+
+.button--right {
+  left: 1000px;
+  background-color: #eb3d71;
+}
