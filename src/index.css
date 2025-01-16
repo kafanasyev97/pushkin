@@ -1,5 +1,17 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #d4d4d4;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2 {
   margin: 0;
   padding: 0;
 }
@@ -53,7 +65,7 @@ body {
 }
 
 .button {
-  width: 100px;
+  width: 150px;
   height: 50px;
   border-radius: 10px;
   border: 1px solid black;
@@ -61,9 +73,10 @@ body {
   /* top: 30px; */
   cursor: pointer;
   font-size: 17px;
-  font-weight: 600;
+  /* font-weight: 600; */
   transition: 0.5s;
   will-change: transform;
+  color: #fff;
 }
 
 .button:hover {
@@ -72,10 +85,100 @@ body {
 
 .button--left {
   left: 700px;
-  background-color: #34eb89;
+  background-color: #1aca6c;
 }
 
 .button--right {
   left: 1000px;
+  background-color: #eb3d71;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: slideDownOverlay 0.5s ease-out forwards;
+}
+
+.modal-content {
+  background: white;
+  width: 50%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1010; /* Над фоновым слоем */
+  animation: fadeIn 0.4s ease-out;
+  will-change: transform;
+  transform: translateY(-100%);
+  animation: slideDownModal 0.5s ease-out forwards;
+}
+
+@keyframes slideDownOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownModal {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-inputs input {
+  width: 100%;
+  height: 3vw;
+  /* border-radius: 10px; */
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.modal-buttons button {
+  width: 130px;
+  height: 30px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.modal-button-save {
+  background-color: #1aca6c;
+}
+
+.modal-button-cancel {
   background-color: #eb3d71;
 }
