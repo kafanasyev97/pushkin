@@ -1,10 +1,17 @@
 import { useState } from 'react'
 
-const Card = ({ title, text }) => {
+const Card = ({ id, title, text, selectCard }) => {
   const [isActive, setIsActive] = useState(false)
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     setIsActive((prevState) => !prevState)
+    selectCard((prev) => {
+      if (prev.includes(id)) {
+        const result = prev.filter((elem) => elem !== id)
+        return result
+      }
+      return [...prev, id]
+    })
   }
   return (
     <div

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 
-const ModalWindow = ({ closeModal }) => {
+const ModalWindow = ({ closeModal, fetchCards }) => {
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
 
@@ -13,6 +13,7 @@ const ModalWindow = ({ closeModal }) => {
       text,
     })
     closeModal()
+    fetchCards()
   }
   return (
     <div className="modal" onClick={closeModal}>

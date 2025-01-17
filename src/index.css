@@ -83,6 +83,12 @@ h2 {
   transform: scale(1.1);
 }
 
+.button:disabled {
+  transform: scale(1);
+  cursor: auto;
+  opacity: 0.5;
+}
+
 .button--left {
   left: 700px;
   background-color: #1aca6c;
