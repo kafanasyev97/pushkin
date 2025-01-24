@@ -1,17 +1,12 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 
-const Card = ({ id, title, text, selectCard }) => {
+const Card = memo(({ id, title, text, selectCard }) => {
   const [isActive, setIsActive] = useState(false)
+  console.log('9999')
 
   const handleClick = () => {
     setIsActive((prevState) => !prevState)
-    selectCard((prev) => {
-      if (prev.includes(id)) {
-        const result = prev.filter((elem) => elem !== id)
-        return result
-      }
-      return [...prev, id]
-    })
+    selectCard(id)
   }
   return (
     <div
@@ -22,6 +17,6 @@ const Card = ({ id, title, text, selectCard }) => {
       <div className="card__text">{text}</div>
     </div>
   )
-}
+})
 
 export default Card

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import Card from './components/Card'
 import Button from './components/UI/Button'
@@ -13,6 +13,7 @@ function App() {
 
   const fetchCards = async () => {
     const url = 'http://localhost:3000/cards'
+
     const response = await axios.get(url)
 
     const result = await response.data
@@ -22,19 +23,28 @@ function App() {
     fetchCards()
   }, [])
 
-  const toggleModal = () => {
+  const toggleModal = useCallback(() => {
     setIsModal((modal) => !modal)
-  }
+  }, [])
 
-  const removeCards = async () => {
+  const selectCardHandler = useCallback((id) => {
+    setSelectedCards((prev) => {
+      if (prev.includes(id)) {
+        const result = prev.filter((elem) => elem !== id)
+        return result
+      }
+      return [...prev, id]
+    })
+  }, [])
+
+  const removeCards = useCallback(async () => {
     const url = 'http://localhost:3000/cards'
-    const response = await axios.delete(url, {
+    await axios.delete(url, {
       data: selectedCards,
     })
-    console.log('11', response)
     fetchCards()
     setSelectedCards([])
-  }
+  }, [selectedCards])
 
   return (
     <>
@@ -60,7 +70,7 @@ function App() {
                   id={elem.id}
                   title={elem.title}
                   text={elem.text}
-                  selectCard={setSelectedCards}
+                  selectCard={selectCardHandler}
                 />
               )
             })

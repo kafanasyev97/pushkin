@@ -8,11 +8,11 @@ const ModalWindow = ({ closeModal, fetchCards }) => {
   const addNewCard = async () => {
     const url = 'http://localhost:3000/cards/'
 
-    axios.post(url, {
+    closeModal()
+    await axios.post(url, {
       title,
       text,
     })
-    closeModal()
     fetchCards()
   }
   return (
