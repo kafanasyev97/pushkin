@@ -9,7 +9,6 @@ function App() {
   const [cards, setCards] = useState([])
   const [selectedCards, setSelectedCards] = useState([])
   const [isModal, setIsModal] = useState(false)
-  console.log('22', selectedCards)
 
   const fetchCards = async () => {
     const url = 'http://localhost:3000/cards'

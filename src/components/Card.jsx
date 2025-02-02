@@ -2,7 +2,6 @@ import { memo, useState } from 'react'
 
 const Card = memo(({ id, title, text, selectCard }) => {
   const [isActive, setIsActive] = useState(false)
-  console.log('9999')
 
   const handleClick = () => {
     setIsActive((prevState) => !prevState)
