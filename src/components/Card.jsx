@@ -2,11 +2,12 @@ import { memo, useState } from 'react'
 
 const Card = memo(({ id, title, text, selectCard }) => {
   const [isActive, setIsActive] = useState(false)
-  console.log('9999')
 
   const handleClick = () => {
     setIsActive((prevState) => !prevState)
-    selectCard(id)
+    selectCard((prev) =>
+      prev.includes(id) ? prev.filter((elem) => elem !== id) : [...prev, id]
+    )
   }
   return (
     <div

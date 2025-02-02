@@ -1,20 +1,17 @@
-import axios from 'axios'
 import { useState } from 'react'
+import { useAddCardMutation } from '../services/cardsApi'
 
-const ModalWindow = ({ closeModal, fetchCards }) => {
+const ModalWindow = ({ closeModal }) => {
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
+  const [addCard] = useAddCardMutation()
 
   const addNewCard = async () => {
-    const url = 'http://localhost:3000/cards/'
-
+    if (!title || !text) return
+    await addCard({ title, text })
     closeModal()
-    await axios.post(url, {
-      title,
-      text,
-    })
-    fetchCards()
   }
+
   return (
     <div className="modal" onClick={closeModal}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
