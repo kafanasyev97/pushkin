@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
-import './App.css'
 import Card from './components/Card'
 import Button from './components/UI/Button'
 import ModalWindow from './components/ModalWindow'
 import axios from 'axios'
+import { API_URL } from './constants'
+import './App.css'
 
 function App() {
   const [cards, setCards] = useState([])
@@ -11,7 +12,7 @@ function App() {
   const [isModal, setIsModal] = useState(false)
 
   const fetchCards = async () => {
-    const url = 'http://localhost:3000/cards'
+    const url = `${API_URL}/cards`
 
     const response = await axios.get(url)
 
@@ -37,7 +38,7 @@ function App() {
   }, [])
 
   const removeCards = useCallback(async () => {
-    const url = 'http://localhost:3000/cards'
+    const url = `${API_URL}/cards`
     await axios.delete(url, {
       data: selectedCards,
     })
