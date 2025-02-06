@@ -1,12 +1,13 @@
 import axios from 'axios'
 import { useState } from 'react'
+import { API_URL } from '../constants'
 
 const ModalWindow = ({ closeModal, fetchCards }) => {
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
 
   const addNewCard = async () => {
-    const url = 'http://localhost:3000/cards/'
+    const url = `${API_URL}/cards`
 
     closeModal()
     await axios.post(url, {
