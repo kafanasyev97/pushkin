@@ -1,8 +1,26 @@
-# React + Vite
+# Страница с карточками. Дизайн адаптивный, подстраивается под размер экрана. Реализована возможность добавления и удаления карточек с помощью API запросов к серверу.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Проект является подмодулем(frontend) для другого проекта (https://github.com/kafanasyev97/pushkin_compose).
 
-Currently, two official plugins are available:
+## Используемые технологии:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 18.3.1;
+- vite 6.0.5.
+
+## Запуск проекта
+
+1. В режиме разработки рекомендуется запускать проект командой:
+
+```sh
+npm run dev
+```
+
+2. Для сборки приложения используется команда:
+
+```sh
+npm run build
+```
+
+#
+
+Также в проекте есть 2 Dockerfile. Dockerfile.dev используется для разработки(если работа в vscode, расширение Dev Containers предложит открыть проект в контейнере). Обычный Dockerfile используется для тестового запуска в режиме production(запуск приложения через nginx в контейнере).
